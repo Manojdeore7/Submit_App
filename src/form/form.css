@@ -1,0 +1,32 @@
+.form{
+    width: 30%;
+    background-color: aqua;
+    padding: 30px;
+    border-radius: 10px;
+    
+    margin: auto;
+    margin-top: 10%;
+    box-shadow:  rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.form input{
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    color: black;
+    font-weight: bold;
+    font-family: cursive;
+}
+.form label{
+    font-weight: bold;
+    color: black;
+}
+.form button{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    margin-top: 5px;
+}
+.form button:hover{
+    background-color: blue;
+}
