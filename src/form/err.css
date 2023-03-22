@@ -1,0 +1,29 @@
+.err{
+    background-color: white;
+    position: fixed;
+    width: 40%;
+    padding: 20px;
+    border-radius: 10px;
+   margin-left: 30%;
+   box-shadow:  rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+}
+.err div{
+    padding: 10px;
+    text-align: center;
+    background-color: purple;
+    color: white;
+    font-weight: bold;
+}
+.err p{
+    height: 100px;
+    font-weight: 900;
+}
+.err button{
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: purple;
+   float: right;
+}
