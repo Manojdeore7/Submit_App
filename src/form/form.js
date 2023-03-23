@@ -1,44 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./form.css";
 import Err from "./err";
 function Form(props) {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+  let nameR = useRef();
+  let ageR = useRef();
+
   const [err, setErr] = useState(false);
   const [mesage, setMessage] = useState("");
-  const [ram, setRam] = useState(true);
-  function nameHandeler(e) {
-    setName(e.target.value);
-  }
-  function ageHandeler(e) {
-    setAge(e.target.value);
-  }
+
   function errHandler(e) {
     setErr(false);
-    setRam(true);
   }
   function formHandeler(e) {
     e.preventDefault();
-    if (name.length == 0 || age.length == 0) {
+    if (nameR.current.value.length == 0 || ageR.current.value.length == 0) {
       setMessage("Invalid input");
-      setRam(false);
+
       setErr(true);
       return;
     }
-    if (Number(age) <= 0) {
+    if (Number(ageR.current.value) <= 0) {
       setMessage("Age must be greater than 0");
-      setRam(false);
+
       setErr(true);
       return;
     }
     let obj = {
-      Name: name,
-      Age: age,
+      Name: nameR.current.value,
+      Age: ageR.current.value,
     };
     props.submit(obj);
-    setName("");
-    setAge("");
+    nameR.current.value = "";
+    ageR.current.value = "";
   }
+
   return (
     <>
       {err && (
@@ -50,17 +45,17 @@ function Form(props) {
         onSubmit={formHandeler}
         className="form"
         style={{
-          pointerEvents: !ram ? "none" : "auto",
-          opacity: !ram ? "0.5" : "1",
+          pointerEvents: err ? "none" : "auto",
+          opacity: err ? "0.5" : "1",
         }}
       >
         <div>
           <label>Username</label>
-          <input type="text" onChange={nameHandeler} value={name}></input>
+          <input type="text" ref={nameR}></input>
         </div>
         <div>
           <label>Age</label>
-          <input type="number" onChange={ageHandeler} value={age}></input>
+          <input type="number" ref={ageR}></input>
         </div>
         <div>
           <button type="submit">Add User</button>
