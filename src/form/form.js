@@ -6,6 +6,7 @@ function Form(props) {
   const [age, setAge] = useState("");
   const [err, setErr] = useState(false);
   const [mesage, setMessage] = useState("");
+  const [ram, setRam] = useState(true);
   function nameHandeler(e) {
     setName(e.target.value);
   }
@@ -14,16 +15,19 @@ function Form(props) {
   }
   function errHandler(e) {
     setErr(false);
+    setRam(true);
   }
   function formHandeler(e) {
     e.preventDefault();
     if (name.length == 0 || age.length == 0) {
       setMessage("Invalid input");
+      setRam(false);
       setErr(true);
       return;
     }
     if (Number(age) <= 0) {
       setMessage("Age must be greater than 0");
+      setRam(false);
       setErr(true);
       return;
     }
@@ -42,7 +46,14 @@ function Form(props) {
           <Err title="Not Valid" message={mesage} onConfirm={errHandler}></Err>
         </>
       )}
-      <form onSubmit={formHandeler} className="form">
+      <form
+        onSubmit={formHandeler}
+        className="form"
+        style={{
+          pointerEvents: !ram ? "none" : "auto",
+          opacity: !ram ? "0.5" : "1",
+        }}
+      >
         <div>
           <label>Username</label>
           <input type="text" onChange={nameHandeler} value={name}></input>

@@ -5,7 +5,9 @@
     padding: 20px;
     border-radius: 10px;
    margin-left: 30%;
-   box-shadow:  rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+  top: 20px;
+   box-shadow:  rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  
 }
 .err div{
     padding: 10px;
